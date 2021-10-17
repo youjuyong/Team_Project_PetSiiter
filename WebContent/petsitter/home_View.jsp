@@ -55,17 +55,30 @@ function validCheck() {
 			<div  style="text-align: center">
 			 <input type="submit" value="찾기"> 
 			 <input type="reset" value="다시쓰기">
+			 <input type="submit" value="사진찾기" onClick="location.href='PetSitterGalleryAction.jsp'">
 			</div>
 		</div>
 	</div>
 	<c:forEach var="cmt" items="${cmtlist }">
 				<li>펫시터 목록
 					<ul>
+						<li>idx값 :  ${cmt.idx}</li>
 						<li>주소 : ${cmt.address}</li>
 						<li>날짜 : ${cmt.wdate}</li>	
 						<li>날짜 : ${cmt.owner}</li>		
 					</ul>
 				</li>
+	</c:forEach>
+	<c:forEach var = "item" items = "${glist}">
+	<div class = "container">
+		<div class = "thumbnail">
+			<img alt = "gallery" src = "/img/${item.filename }">
+			<!-- /img/는 url 경로와 c:\upload 매핑이 필욯ㅂ니다 -->
+		</div>
+		<div>
+			<strong>${item.title }</strong>
+		</div>
+	</div>
 	</c:forEach>
 </form>
 </body>
