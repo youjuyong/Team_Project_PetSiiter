@@ -3,16 +3,15 @@
 
  -->
 
-
-<%@page import="dto.Gallery"%>
+<%@page import="dto.PetsitterDto"%>
+<%@page import="dao.PetsitterDao"%>
+<%@page import="dto.GalleryDto"%>
 <%@page import="dao.GalleryDao"%>
 <%@page import="dto.AdopttimeDto"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
-<%@page import="dto.AddressDto"%>
-<%@page import="dao.AddressDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -23,21 +22,26 @@
 	String wdate_final = request.getParameter("wdate_final");
 	String owner = Arrays.toString(request.getParameterValues("owner"));
 	owner = owner.substring(1, owner.length()-1);
-
+	
+	int pageNo;
+	if(request.getParameter("page")==null) pageNo=1;
+	else pageNo = Integer.parseInt(request.getParameter("page")); 
+	int pageSize =3;
+	//PageDto pageDto = new PageDto(pageNo,dao.getCount(),pageSize);
+	
+	
 	AdopttimeDto adopt = new AdopttimeDto(address,wdate_start,wdate_final,owner);
 	
-	AddressDao cdao = AddressDao.getInstance();	
-	List<AddressDto> cmts = cdao.select(adopt);
-	
+	PetsitterDao cdao = PetsitterDao.getInstance();
+	List<PetsitterDto> cmts = cdao.select(adopt);
+	/*
 	GalleryDao gdao = GalleryDao.getInstance();
-
-	for(AddressDto s : cmts){
+	for(PetsitterDto s : cmts){
 	int pet_idx = s.getIdx();
-	List<Gallery> list = gdao.getList(pet_idx);
+	List<GalleryDto> list = gdao.getList(pet_idx);
 	request.setAttribute("glist",list);
-	}
+	} */
 	request.setAttribute("cmtlist",cmts);
-	pageContext.forward("home_View.jsp");
- 	
+	pageContext.forward("home_View.jsp"); 
 %>
    

@@ -23,7 +23,7 @@
   <!-- JDBC로 처리하는 상당부분의 코드와 파라미터 설정 및 결과 매핑 해준다.   -->
   <mappers>
   	<!-- 실행할 SQL 쿼리 저장한 파일.  -->
-    <mapper resource="mybatis/address.xml"/>
+    <mapper resource="mybatis/Petsitter.xml"/>
  	<mapper resource="mybatis/gallery.xml"/>
     <!-- sql  -->
   </mappers>

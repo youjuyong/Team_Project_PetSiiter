@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Petsitter"> <!-- namespace : 일종의 식별역할의 변수 -->
+	
+	<select id ="PetSitter_Select" parameterType="dto.AdopttimeDto" resultType="dto.PetsitterDto">
+		select * from PetSitter_Check_Table where address = #{address} and (wdate between #{wdate_start} and #{wdate_final}) and owner LIKE CONCAT('%', #{owner}, '%')
+	</select>
+	
+	<select id ="petsitter_Select_one" parameterType="int" resultType="dto.PetsitterDto">
+		select * from PetSitter_Check_Table where idx = #{idx}  
+	</select>
+</mapper>
+<!-- ${ } : 표현식. 중괄호안에 수식에 대한 연산결과값을 구해서 출력
+     #{ } : 무조건 문자열(' '기호사용)로 중괄호 안의 값을 처리합니다.
+     parameterType="java.util.Map" -->
+

@@ -9,32 +9,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>펫시터 목록</title>
-<style>
-	ul{
-		list-style: none;
-		padding-inline-start:0px;  /* 목록 들여쓰기 없애기 */
-	}
-	ul #name{
-		padding : 5px  20px;
-		margin : 5px 0px;
-		background-color: tomato;
-		color:white;
-	}
-	li {
-		padding : 5px  20px;
-	}
-</style>
+<title>펫시터 정보</title>
+<link rel="stylesheet" href="../css/body.css">
 </head>
 <body>
-<c:forEach var="cmt" items="${cmtlist }">
-				<li>펫시터 목록
-					<ul>
-						<li>주소 : ${cmt.address}</li>
-						<li>날짜 : ${cmt.wdate}</li>	
-						<li>날짜 : ${cmt.owner}</li>		
-					</ul>
-				</li>
-</c:forEach>
+ 	<div class = "container">
+ 		<div class = "thumbnail">
+		<img alt = "gallery" src = "/img/${pets_list.filename}">
+			<!-- /img/는 url 경로와 c:\upload 매핑이 필욯ㅂ니다 -->
+		<strong>${gall_list.title }</strong>
+		</div>
+		<div class = "box5">
+			<ul class="mylist">
+				<li>이름 : ${pets_list.name}</li>
+				<li>주소 : ${pets_list.address}</li>
+				<li>날짜 : ${pets_list.wdate}</li>	
+				<li>준비 : ${pets_list.owner}</li><br>
+				<li>멘트 : ${pets_list.comment}</li>
+			</ul>
+		</div>
+		<div class="box3">
+			 <!-- <input type="submit" value="찾기"> --> 
+		 	<input type="submit" value="신청하기"> 
+		</div>
+	</div>
 </body>
 </html>
